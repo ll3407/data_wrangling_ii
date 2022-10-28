@@ -1,0 +1,44 @@
+---
+title: "Reading data from the web"
+output: github_document
+date: "2022-10-13"
+---
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(httr)
+```
+
+`
+```{r}
+url = "http://samhda.s3-us-gov-west-1.amazonaws.com/s3fs-public/field-uploads/2k15StateFiles/NSDUHsaeShortTermCHG2015.htm"
+drug_use_html = read_html(url)
+
+drug_use_html
+```
+
+
+```{r}
+drug_use_html %>% 
+  html_table() %>% 
+  first() %>% 
+  slice(-1) 
+```
+
+##SW data
+```{r}
+url = "https://www.imdb.com/list/ls070150896/"
+
+swm_html = read_html(url)
+```
+
+```{r}
+swm_html %>% 
+  html_elements(".lister-item-head a") %>% 
+  html_
+```
+
+
+
